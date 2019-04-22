@@ -21,9 +21,10 @@ process.stdin.on('data', data => {
   } else if (cmds[0] === 'ls') {
     ls(done);
   } else if (cmds[0] === 'cat') {
-    cat(cmds[1]);
+    cat(cmds[1], done);
   } else if (cmds[0] === 'curl') {
-    curl(cmds[1]);
+    //curl(cmds[1])
+    curl(cmds[1], done);
   } else {
     process.stdout.write('\nprompt > ');
   }
