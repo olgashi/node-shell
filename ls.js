@@ -1,4 +1,5 @@
 const fs = require('fs');
+/** 
 const ls = () => {
   fs.readdir('./', 'utf8', (err, files) => {
     if (err) {
@@ -9,4 +10,14 @@ const ls = () => {
     }
   });
 };
-module.exports = ls;
+
+*/
+module.exports = done => {
+  fs.readdir('./', 'utf8', (err, files) => {
+    if (err) {
+      done('something went wrong');
+    } else {
+      done(files.join('\n'));
+    }
+  });
+};

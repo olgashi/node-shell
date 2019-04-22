@@ -5,6 +5,11 @@ const curl = require('./curl');
 
 process.stdout.write('prompt > ');
 
+const done = output => {
+  process.stdout.write(output);
+  process.stdout.write('\nprompt > ');
+};
+
 process.stdin.on('data', data => {
   let cmds = data
     .toString()
@@ -14,7 +19,7 @@ process.stdin.on('data', data => {
   if (cmds[0] === 'pwd') {
     pwd();
   } else if (cmds[0] === 'ls') {
-    ls();
+    ls(done);
   } else if (cmds[0] === 'cat') {
     cat(cmds[1]);
   } else if (cmds[0] === 'curl') {
@@ -23,3 +28,4 @@ process.stdin.on('data', data => {
     process.stdout.write('\nprompt > ');
   }
 });
+module.exports = done;
